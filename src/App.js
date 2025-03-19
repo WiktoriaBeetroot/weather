@@ -40,8 +40,8 @@ class WeatherApp extends React.Component{
             );
             const weatherData = await weatherRes.json();
             this.setState({ weather : weatherData.daily});
-          } catch (err) {
-            console.err(err);
+          } catch {
+            console.log('Error white fetching the data');
           }finally {
             this.setState({ isLoading: false })
           }
@@ -70,7 +70,7 @@ class WeatherApp extends React.Component{
                 {this.state.isLoading && <p className="loader">Loading...</p>}
 
                 {this.state.weather.weathercode && 
-                  <Weather  weather={ this.state.weather } location={ this.state.location }/>
+                  <Weather  weather={ this.state.weather } location={ this.state.locationName }/>
                 }
             </div>
         )
